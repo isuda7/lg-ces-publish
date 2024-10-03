@@ -25,5 +25,6 @@
     "editor.insertSpaces": false,
     "editor.formatOnSave": false,
     "eslint.codeActionsOnSave.rules": null,
-    "editor.renderWhitespace": "all"
+	"editor.renderWhitespace": "all",
+	"editor.hover.enabled": false
 }

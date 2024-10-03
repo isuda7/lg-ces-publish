@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="keywords" content="LG CES">
+	<meta name="description" content="LG CES">
+	<title>Intro | LG CES</title>
+	<link rel="stylesheet" type="text/css" href="./assets/css/ui.style.css" />
+	<script src="./assets/js/aos@2.3.1.js"></script>
+	<script>
+		function quizSelection(_this){
+			const buttons = document.querySelectorAll('.quiz-selection .btn');
+
+			if (_this.classList.contains('is-on')) {
+			// 모든 버튼 초기화
+			buttons.forEach(button => {
+				button.classList.remove('is-on', 'is-off');
+				button.setAttribute('aria-selected', 'false');
+			});
+			} else {
+				buttons.forEach(button => {
+					if (button === _this) {
+						button.classList.add('is-on');
+						button.classList.remove('is-off');
+						button.setAttribute('aria-selected', 'true');
+					} else {
+						button.classList.remove('is-on');
+						button.classList.add('is-off');
+						button.setAttribute('aria-selected', 'false');
+					}
+				});
+			}
+		}
+
+		function PageChange(hideId, showId){
+			const hideClass = 'is-hide'
+			document.getElementById(hideId).classList.add(hideClass);
+			document.getElementById(showId).classList.remove(hideClass);
+		}
+	</script>
+
+</head>
+
+<body>
+	<!-- 콜드스타트 - 시작화면 -->
+	<div id="coldStartIntro" class="page-wrapper intro-wrapper">
+		<div class="page">
+			<div class="page-header">
+				<p class="h1-info">LIFE BEHAVIOR TYPE INDICATOR</p>
+				<h1 class="h1"><img src="./assets/images/intro_title.svg" alt="LBTI QUIZ" /></h1>
+				<p class="h1-explain">Find out how my lifestyle affects my mobility experience</p>
+			</div>
+			<div class="page-footer">
+				<button type="button" class="btn" onclick="PageChange('coldStartIntro', 'coldStartQuiz')">
+					<span>Start</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<!-- // 콜드스타트 - 시작화면 -->
+
+	<!-- 콜드스타트 - 퀴즈선택 -->
+	<div id="coldStartQuiz" class="page-wrapper quiz-wrapper is-hide">
+		<div class="page">
+			<div class="page-progress">
+				<span class="quiz-value" style="width: 40%" aria-label="40%" aria-live="assertive"></span>
+			</div>
+
+			<div class="page-header">
+				<button type="button" class="btn btn-back">Back</button>
+				<h1 class="h1">When buying a car, I priortize</h1>
+				<button type="button" class="btn btn-exit">Exit</button>
+			</div>
+
+			<div class="page-body">
+				<div class="quiz-selection">
+				   <button type="button" class="btn btn-item" aria-selected="false" onclick="quizSelection(this)">
+					   <strong class="tit">High performance</strong>
+					   <span class="img"><img src="./assets/images/img_quiz_01.jpg" alt="" /></span>
+				   </button>
+				   <button type="button" class="btn btn-item" aria-selected="false" onclick="quizSelection(this)">
+					   <strong class="tit">Reasonable value</strong>
+					   <span class="img"><img src="./assets/images/img_quiz_02.jpg" alt="" /></span>
+				   </button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- // 콜드스타트 - 퀴즈선택 -->
+
+	<!-- 콜드스타트 - 퀴즈완료 -->
+	<div id="coldStartChoice" class="page-wrapper yourchoice-wrapper is-hide">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="h1">Your Choice</h1>
+			</div>
+
+			<div class="page-body">
+				<div class="quiz-selection fade-up">
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">High performance</strong>
+						<span class="img"><img src="./assets/images/img_quiz_01.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">Reasonable value</strong>
+						<span class="img"><img src="./assets/images/img_quiz_02.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">High performance</strong>
+						<span class="img"><img src="./assets/images/img_quiz_01.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">Reasonable value</strong>
+						<span class="img"><img src="./assets/images/img_quiz_02.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">High performance</strong>
+						<span class="img"><img src="./assets/images/img_quiz_01.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">Reasonable value</strong>
+						<span class="img"><img src="./assets/images/img_quiz_02.jpg" alt="" /></span>
+					</button>
+				</div>
+			</div>
+		</div>
+		<p class="page-explain">Well, we now know your choices in life</p>
+	</div>
+	<!-- // 콜드스타트 - 퀴즈완료 후 -->
+</body>
+
+</html>
