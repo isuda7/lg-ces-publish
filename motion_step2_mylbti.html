@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="keywords" content="LG CES">
+	<meta name="description" content="LG CES">
+	<title>Intro | LG CES</title>
+	<link rel="stylesheet" type="text/css" href="./assets/css/ui.style.css" />
+	<script src="./assets/js/aos@2.3.1.js"></script>
+	<script>
+		function PageChange(hideId, showId){
+			const hideClass = 'is-hide'
+			document.getElementById(hideId).classList.add(hideClass);
+			document.getElementById(showId).classList.remove(hideClass);
+		}
+
+		document.addEventListener('DOMContentLoaded', function () {
+			// Your Choice
+			setTimeout(() => {
+				// CSS Transition Duration 1.25s
+				document.querySelector('.quiz-selection').classList.add('is-active');
+				// 최소 1250 이상
+				setTimeout(() => {
+					// 분석영상화면으로 전환
+					PageChange('coldStartYourChoioce', 'coldStartYourChoioceVod');
+				}, 2000)
+			}, 2000);
+
+			// Your Choice Vod
+			const video = document.getElementById('yourChoiceVod');
+			video.addEventListener('ended', () => {
+				console.log('Video has ended, video.currentTime = 0;');
+				video.currentTime = 0;
+				// MY LBTI 화면으로 전환
+				PageChange('coldStartYourChoioceVod', 'coldStartMylbs');
+			});
+		})
+	</script>
+
+</head>
+
+<body>
+	<!-- 고객분석중 -->
+	<div id="coldStartYourChoioce" class="page-wrapper yourchoice-wrapper">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="h1">Your Choice</h1>
+			</div>
+
+			<div class="page-body">
+				<div class="quiz-selection fade-up">
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">A Cruise trip ($5,000)</strong>
+						<span class="img"><img src="./assets/images/quiz/img_quiz_1_1.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">A Cruise trip ($5,000)</strong>
+						<span class="img"><img src="./assets/images/quiz/img_quiz_2_2.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">A Cruise trip ($5,000)</strong>
+						<span class="img"><img src="./assets/images/quiz/img_quiz_3_1.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">A Cruise trip ($5,000)</strong>
+						<span class="img"><img src="./assets/images/quiz/img_quiz_4_2.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">A Cruise trip ($5,000)</strong>
+						<span class="img"><img src="./assets/images/quiz/img_quiz_5_1.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
+						<strong class="tit">A Cruise trip ($5,000)</strong>
+						<span class="img"><img src="./assets/images/quiz/img_quiz_6_2.jpg" alt="" /></span>
+					</button>
+				</div>
+				<p class="page-explain">Well, we now know your choices in life</p>
+			</div>
+		</div>
+	</div>
+	<!-- // 고객분석중 -->
+
+	<!-- // 고객분석중 -->
+	<div id="coldStartYourChoioceVod" class="page-wrapper yourchoice-vod-wrapper is-hide">
+		<video autoplay controls id="yourChoiceVod">
+			<source src="./assets/images/coldstart_motion_241012_V1.1.mp4" type="video/mp4">
+		</video>
+	</div>
+	<!-- // 고객분석중 -->
+
+	<!-- 고객분석설과 -->
+	<div id="coldStartMylbs" class="page-wrapper mylbti-wrapper is-hide">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="h1">MY LBTI</h1>
+			</div>
+
+			<div class="page-body">
+				<!-- sec-01 -->
+				<div class="sec-01">
+					<ul class="lbti-list">
+						<li class="lbti-item"><div class="item">Cost-Effective</div></li>
+						<li class="lbti-item"><div class="item">Inactive</div></li>
+						<li class="lbti-item"><div class="item">New Experience</div></li>
+						<li class="lbti-item"><div class="item">Planned</div></li>
+						<li class="lbti-item"><div class="item">Popular</div></li>
+						<li class="lbti-item"><div class="item">Delicate</div></li>
+					</ul>
+				</div>
+				<!-- // sec-01 -->
+				<!-- sec-02 -->
+				<div class="sec-02">
+					<div class="sec-inner sec-scroll">
+						<div class="data-content">
+							<h2 class="h2">Smart &amp; Delicate Scheduler</h2>
+							<div class="cont">
+								<p>You pursue a sensitive and planned lifestyle.</p>
+								<p>You pursue a sensitive and planned lifestyle.</p>
+								<p>You pursue a sensitive and planned lifestyle.</p>
+							</div>
+						</div>
+						<div class="data-graph">
+							<svg width="120" height="120">
+								<!-- Gradient Definition -->
+								<defs>
+									<linearGradient id="bgGradient" x1="100%" y1="100%" x2="0%" y2="100%">
+										<stop offset="0%" style="stop-color:#fff; stop-opacity:0.1" />
+										<stop offset="100%" style="stop-color:#999; stop-opacity:0.1" />
+									</linearGradient>
+								</defs>
+								<!-- Background Circle -->
+								<circle cx="60" cy="60" r="50" class="circle" stroke="url(#bgGradient)"/>
+
+								<!-- Gradient Definition -->
+								<defs>
+									<linearGradient id="perGradient" x1="100%" y1="100%" x2="0%" y2="100%">
+										<stop offset="0%" style="stop-color:#C9B3EE; stop-opacity:1" />
+										<stop offset="100%" style="stop-color:#A17DC4; stop-opacity:1" />
+									</linearGradient>
+								</defs>
+								<!-- Progress Circle with Gradient -->
+								<circle cx="60" cy="60" r="50" class="circle progress-circle" stroke="url(#perGradient)"
+										stroke-dasharray="314.16"
+										stroke-dashoffset="314.16" />
+
+							</svg>
+							<div class="percentage-display" id="percentage">0%</div>
+						</div>
+					</div>
+				</div>
+				<!-- // sec-02 -->
+				<!-- sec-03 -->
+				<div class="sec-03">
+					<ul class="sec-list">
+						<li class="sec-item">
+							<div class="data-item">
+								<div class="data-icon">
+									<i class="icn icn-100-interest">Interest</i>
+								</div>
+								<ul class="data-list">
+									<li>Data 1</li>
+									<li>Data 2</li>
+									<li>Data 3</li>
+								</ul>
+							</div>
+						</li>
+						<li class="sec-item">
+							<div class="data-item">
+								<div class="data-icon">
+									<i class="icn icn-100-purchase">Purchase</i>
+								</div>
+								<ul class="data-list">
+									<li>Data 1</li>
+									<li>Data 2</li>
+									<li>Data 3</li>
+								</ul>
+							</div>
+						</li>
+						<li class="sec-item">
+							<div class="data-item">
+								<div class="data-icon">
+									<i class="icn icn-100-home">Home</i>
+								</div>
+								<ul class="data-list">
+									<li>Data 1</li>
+									<li>Data 2</li>
+									<li>Data 3</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- // sec-03 -->
+				<!-- sec-04 -->
+				<div class="sec-04">
+					<div class="sec-inner sec-scroll">
+						<div class="data-item">
+							<div class="data-icon">
+								<i class="icn icn-100-car"></i>
+							</div>
+							<ul class="data-list">
+								<li>Data 1</li>
+								<li>Data 2</li>
+								<li>Data 3</li>
+							</ul>
+						</div>
+
+						<div class="data-content">
+							<h2 class="h2">POI Category</h2>
+							<div class="cont">
+								<p>You pursue a sensitive and planned lifestyle.</p>
+								<p>You pursue a sensitive and planned lifestyle.You pursue a sensitive and planned lifestyle.</p>
+							</div>
+						</div>
+
+						<div class="data-content">
+							<h2 class="h2">Driving Habaits</h2>
+							<div class="cont">
+								<p>You pursue a sensitive and planned lifestyle.</p>
+								<p>You pursue a sensitive and planned lifestyle.You pursue a sensitive and planned lifestyle.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- // sec-04 -->
+			</div>
+
+			<div class="page-footer">
+				<!-- 선택 후: is-selected -->
+				<button type="button" class="btn btn-rounded btn-ride">
+					<span>Ride</span>
+				</button>
+			</div>
+		</div>
+	</div>
+	<!-- // 고객분석설과 -->
+</body>
+
+</html>

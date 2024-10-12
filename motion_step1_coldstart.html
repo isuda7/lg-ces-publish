@@ -41,6 +41,14 @@
 			const hideClass = 'is-hide'
 			document.getElementById(hideId).classList.add(hideClass);
 			document.getElementById(showId).classList.remove(hideClass);
+
+			// 인트로 버튼 활성/비활성
+			const $btnIntroStart = document.getElementById('btnIntroStart');
+			if (hideId === 'coldStartIntro') {
+				$btnIntroStart.classList.add('is-selected');
+			} else if (showId === 'coldStartIntro') {
+				$btnIntroStart.classList.remove('is-selected');
+			}
 		}
 	</script>
 
@@ -51,12 +59,18 @@
 	<div id="coldStartIntro" class="page-wrapper intro-wrapper">
 		<div class="page">
 			<div class="page-header">
-				<p class="h1-info">LIFE BEHAVIOR TYPE INDICATOR</p>
-				<h1 class="h1"><img src="./assets/images/intro_title.svg" alt="LBTI QUIZ" /></h1>
-				<p class="h1-explain">Find out how my lifestyle affects my mobility experience</p>
+				<h1 class="h1">
+					<span class="h1-01">Find out how my lifestyle affects</span>
+					<span class="h1-02">My Mobility Experience</span>
+				</h1>
+				<p class="h1-explain">
+					<em>Let’s Start the LBTI Quiz</em>
+					<small><b>L</b>ife <b>B</b>ehavior <b>T</b>ype <b>I</b>ndicator</small>
+				</p>
 			</div>
 			<div class="page-footer">
-				<button type="button" class="btn" onclick="PageChange('coldStartIntro', 'coldStartQuiz')">
+				<!-- 선택 후: is-selected -->
+				<button type="button" id="btnIntroStart" class="btn btn-rounded btn-start" onclick="PageChange('coldStartIntro', 'coldStartQuiz')">
 					<span>Start</span>
 				</button>
 			</div>
@@ -72,7 +86,7 @@
 			</div>
 
 			<div class="page-header">
-				<button type="button" class="btn btn-back">Back</button>
+				<button type="button" class="btn btn-back" onclick="PageChange('coldStartQuiz', 'coldStartIntro')">Back</button>
 				<h1 class="h1">When buying a car, I priortize</h1>
 				<button type="button" class="btn btn-exit">Exit</button>
 			</div>
@@ -81,57 +95,17 @@
 				<div class="quiz-selection">
 				   <button type="button" class="btn btn-item" aria-selected="false" onclick="quizSelection(this)">
 					   <strong class="tit">High performance</strong>
-					   <span class="img"><img src="./assets/images/img_quiz_01.jpg" alt="" /></span>
+					   <span class="img"><img src="./assets/images/quiz/img_quiz_1_1.jpg" alt="" /></span>
 				   </button>
 				   <button type="button" class="btn btn-item" aria-selected="false" onclick="quizSelection(this)">
 					   <strong class="tit">Reasonable value</strong>
-					   <span class="img"><img src="./assets/images/img_quiz_02.jpg" alt="" /></span>
+					   <span class="img"><img src="./assets/images/quiz/img_quiz_1_2.jpg" alt="" /></span>
 				   </button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- // 콜드스타트 - 퀴즈선택 -->
-
-	<!-- 콜드스타트 - 퀴즈완료 -->
-	<div id="coldStartChoice" class="page-wrapper yourchoice-wrapper is-hide">
-		<div class="page">
-			<div class="page-header">
-				<h1 class="h1">Your Choice</h1>
-			</div>
-
-			<div class="page-body">
-				<div class="quiz-selection fade-up">
-					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
-						<strong class="tit">High performance</strong>
-						<span class="img"><img src="./assets/images/img_quiz_01.jpg" alt="" /></span>
-					</button>
-					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
-						<strong class="tit">Reasonable value</strong>
-						<span class="img"><img src="./assets/images/img_quiz_02.jpg" alt="" /></span>
-					</button>
-					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
-						<strong class="tit">High performance</strong>
-						<span class="img"><img src="./assets/images/img_quiz_01.jpg" alt="" /></span>
-					</button>
-					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
-						<strong class="tit">Reasonable value</strong>
-						<span class="img"><img src="./assets/images/img_quiz_02.jpg" alt="" /></span>
-					</button>
-					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
-						<strong class="tit">High performance</strong>
-						<span class="img"><img src="./assets/images/img_quiz_01.jpg" alt="" /></span>
-					</button>
-					<button type="button" class="btn btn-item is-on" aria-selected="true" onclick="quizSelection(this)">
-						<strong class="tit">Reasonable value</strong>
-						<span class="img"><img src="./assets/images/img_quiz_02.jpg" alt="" /></span>
-					</button>
-				</div>
-			</div>
-		</div>
-		<p class="page-explain">Well, we now know your choices in life</p>
-	</div>
-	<!-- // 콜드스타트 - 퀴즈완료 후 -->
 </body>
 
 </html>
