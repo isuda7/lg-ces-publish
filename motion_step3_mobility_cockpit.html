@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="keywords" content="LG CES">
+	<meta name="description" content="LG CES">
+	<title>Welcome, Driver! | LG CES</title>
+	<link rel="stylesheet" type="text/css" href="./assets/css/ui.style.css" />
+	<script>
+		let currentId = 'mobilityStart';
+
+		// 헤더설정
+		function setHeader(){
+			console.log(currentId);
+			const askTitle = document.getElementById('askTitle');
+			const askExitBtn = document.getElementById('askExitBtn');
+			if (currentId === 'askSearching' || currentId === 'askResult') {
+				askExitBtn.classList.remove('is-hide');
+				askTitle.innerText = 'Ask Anything';
+			} else {
+				askExitBtn.classList.add('is-hide');
+				askTitle.innerText = 'Ask Me Questions Like';
+			}
+		}
+
+		// 화면전환
+		function PageChange(hideId, showId, btn){
+			const hideClass = 'is-hide';
+			document.getElementById(hideId).classList.add(hideClass);
+			document.getElementById(showId).classList.remove(hideClass);
+
+			// showId 화면의 선택된 상태 초기화
+			const selected = document.querySelectorAll('#'+showId+' .is-selected');
+			selected.forEach((button) => {
+				button.classList.remove('is-selected');
+			});
+
+			// 클릭한 버튼
+			if (btn) {
+				btn.classList.add('is-selected');
+			}
+
+			if (showId === 'askSearching' || showId === 'askResult') {
+				currentId = showId;
+				setHeader()
+			}
+		}
+
+		// 음성입력 화면
+		function micPlayer(showId, _this) {
+			// 화면설정
+			document.getElementById(showId).classList.remove('is-hide');
+			_this.setAttribute('disabled', 'true');
+			document.getElementById('askTitle').innerText = 'Now Listening';
+
+			// Your Choice Vod
+			const video = document.getElementById('voiceVod');
+			video.play();
+			video.addEventListener('ended', () => {
+				video.currentTime = 0;
+				// MY LBTI 화면으로 전환
+				document.getElementById(showId).classList.add('is-hide');
+				_this.removeAttribute ('disabled');
+				setHeader();
+			});
+		}
+
+		// Cockpit myLBTI Popup
+		function mylbtiPopup(btn) {
+			const popup = document.getElementById('mylbtiPopup');
+
+			// 팝업 열고 닫기 (is-hide 클래스 토글)
+			popup.classList.toggle('is-hide');
+
+			// 버튼에 is-expended 클래스 토글
+			btn.classList.toggle('is-expended');
+		}
+	</script>
+</head>
+
+<body>
+	<div class="cockpit-wrapper">
+		<!-- cockpit-frame -->
+		<div class="cockpit-frame">
+			<!-- Mobility Wrapper -->
+			<!-- Mobility Start -->
+			<div id="mobilityStart" class="page-wrapper mobility-start-wrapper">
+				<div class="page">
+					<div class="page-header">
+						<h1 class="h1">
+							<span class="h1-01">Welcome, </span>
+							<span class="h1-02">Driver!</span>
+						</h1>
+					</div>
+					<div class="page-footer">
+						<!-- 선택 후: is-selected 추가 -->
+						<button type="button" class="btn btn-rounded btn-start" onclick="PageChange('mobilityStart','mobilityAsk', this)">
+							<span>Start</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<!-- // Mobility Start -->
+
+			<!-- Mobility 질문 -->
+			<div id="mobilityAsk" class="page-wrapper mobility-ask-wrapper is-hide">
+				<div class="page">
+					<div class="page-header">
+						<h1 id="askTitle" class="h1">Ask Me Questions Like</h1>
+						<button type="button" id="askExitBtn" class="btn btn-texted btn-exit is-hide" onclick="PageChange('mobilityAsk', 'mobilityExit', this)">
+							<span>Exit</span>
+						</button>
+					</div>
+
+					<!-- 1.질문박스 -->
+					<div id="askExample" class="page-body">
+						<div class="ask-example">
+							<!-- 화면이 노출되면 fade-up 추가 -->
+							<!-- 선택 됨: is-selected 추가 -->
+							<button type="button" class="btn btn-example" onclick="PageChange('askExample', 'askSearching', this)">
+								<strong class="tit">Good Cafe</strong>
+								<span class="txt">Find me a cafe near destination</span>
+							</button>
+							<button type="button" class="btn btn-example" onclick="PageChange('askExample', 'askResult', this)">
+								<strong class="tit">Place to Rest</strong>
+								<span class="txt">Find a restful place nearby</span>
+							</button>
+							<button type="button" class="btn btn-example" onclick="PageChange('askExample', 'askResult', this)">
+								<strong class="tit">Activities Nearby</strong>
+								<span class="txt">Find things to do nearby</span>
+							</button>
+						</div>
+					</div>
+					<!-- // 1.질문박스 -->
+
+					<!-- 2. 검색중 -->
+					<div id="askSearching" class="page-body is-hide">
+						<ul class="ask-list">
+							<li>
+								<!-- 질문/답변생성중 -->
+								<div class="ask-faq is-creating">
+									<div class="ask-question">
+										<p class="txt">Find me a place to dine near Las Vegas Convention Center</p>
+									</div>
+									<div class="ask-answer">
+										<p class="txt">Find me a place to dine near Las Vegas Convention Center</p>
+									</div>
+									<div class="ask-answer has-bg bg-1">
+										<p class="txt">Find me a place to dine near Las Vegas Convention Center</p>
+									</div>
+									<div class="ask-answer has-bg bg-2">
+										<p class="txt">Find me a place to dine near Las Vegas Convention Center</p>
+									</div>
+									<div class="ask-answer has-bg bg-3">
+										<p class="txt">Find me a place to dine near Las Vegas Convention Center</p>
+									</div>
+									<div class="ask-answer has-bg bg-4">
+										<p class="txt">Find me a place to dine near Las Vegas Convention Center</p>
+									</div>
+									<div class="ask-answer has-bg bg-5">
+										<p class="txt">Find me a place to dine near Las Vegas Convention Center</p>
+									</div>
+									<div class="ask-answer has-bg bg-6">
+										<p class="txt">Find me a place to dine near Las Vegas Convention Center</p>
+									</div>
+									<div class="ask-answer has-bg bg-7">
+										<p class="txt">Find me a place to dine near Las Vegas Convention Center</p>
+									</div>
+								</div>
+								<!-- // 질문/답변생성중 -->
+							</li>
+						</ul>
+					</div>
+					<!-- // 2. 검색중 -->
+
+					<!-- 3. 검색결과 -->
+					<div id="askResult" class="page-body is-hide">
+						<!-- 질문 목록 -->
+						<ul class="ask-list">
+							<li>
+								<!-- 질문/답변 -->
+								<div class="ask-faq">
+									<div class="ask-question">
+										<p class="txt">Find me a place to dine near Las Vegas Convention Center</p>
+									</div>
+									<div class="ask-answer">
+										<p class="tit"><strong>Hot N Juicy Crawfish</strong></p>
+										<p class="txt">They’re famous for Louisiana sytle Seafood among the locals. <br/>I recommend Blue Crabs as a seasonal menu.</p>
+									</div>
+								</div>
+								<!-- // 질문/답변 -->
+							</li>
+						</ul>
+						<!-- // 질문 목록 -->
+					</div>
+					<!-- // 3. 검색결과 -->
+
+					<!-- 말하기 진행중일때는 disabled 속성 추가 -->
+					<div class="page-footer">
+						<button type="button" class="btn btn-mic" aria-label="말하기" onclick="micPlayer('askMicPlayer', this)"></button>
+					</div>
+
+					<!-- 공통. 음성번역중 -->
+					<div id="askMicPlayer" class="page-layer is-hide">
+						<video id="voiceVod" controls autoplay class="ask-voice-vod">
+							<source src="./assets/images/voice_translation.mp4" type="video/mp4">
+						</video>
+					</div>
+					<!-- // 공통. 음성번역중 -->
+				</div>
+			</div>
+			<!-- // Mobility 질문 -->
+
+			<!-- Mobility Exit -->
+			<div id="mobilityExit" class="page-wrapper mobility-exit-wrapper is-hide">
+				<div class="page">
+					<div class="page-header">
+						<h1 class="h1">Want to Exit?</h1>
+						<button type="button" class="btn btn-texted btn-return" onclick="PageChange('mobilityExit','mobilityAsk')">
+							<span>Return</span>
+						</button>
+					</div>
+					<div class="page-footer">
+						<button type="button" class="btn btn-rounded btn-exit" onclick="PageChange('mobilityExit','mobilityEnd')">
+							<span>Exit</span>
+						</button>
+					</div>
+				</div>
+			</div>
+			<!-- // Mobility Exit -->
+
+			<!-- Mobility End -->
+			<div id="mobilityEnd" class="page-wrapper mobility-end-wrapper is-hide">
+				<div class="page">
+					<div class="page-header">
+						<h1 class="h1">Goodbye, <br/> Driver!</h1>
+					</div>
+				</div>
+			</div>
+			<!-- // Mobility End  -->
+			<!-- // Mobility Wrapper -->
+		</div>
+		<!-- // cockpit-frame -->
+
+		<!-- cockpit popup -->
+		<!-- 작업중 -->
+		<button type="button" class="btn btn-texted btn-mylbs" aria-label="My LBTI Toggle" onclick="mylbtiPopup(this)"></button>
+		<div id="mylbtiPopup" class="mylbs-popup is-hide">
+			<div class="popup-content">
+				<div class="mylbs-graph-box">
+					<h3 class="h3">Smart &amp; Delicate Scheduler</h3>
+					<ul class="lbti-list">
+						<li class="lbti-item"><div class="item">Cost-Effective</div></li>
+						<li class="lbti-item"><div class="item">Inactive</div></li>
+						<li class="lbti-item"><div class="item">New Experience</div></li>
+						<li class="lbti-item"><div class="item">Planned</div></li>
+						<li class="lbti-item"><div class="item">Popular</div></li>
+						<li class="lbti-item"><div class="item">Delicate</div></li>
+					</ul>
+				</div>
+				<div class="mylbs-data-box">
+					<div class="mylbs-data-scroll">
+						<p>We have recommended you this restaurant based on the choices of the people that are similar to you.</p>
+						<p>Smart & Delicate Schedulers tend to prefer cheaper restaurants when choosing a place to dine, but also consider new types of cuisine to challenge and expand their experiences.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- // cockpit popup -->
+	</div>
+</body>
+
+</html>

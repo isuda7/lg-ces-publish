@@ -11,7 +11,6 @@
 	<meta name="description" content="LG CES">
 	<title>LBTI Quiz | LG CES</title>
 	<link rel="stylesheet" type="text/css" href="./assets/css/ui.style.css" />
-	<script src="./assets/js/aos@2.3.1.js"></script>
 	<script>
 		function quizSelection(_this){
 			const buttons = document.querySelectorAll('.quiz-selection .btn');
@@ -47,21 +46,25 @@
 			</div>
 
 			<div class="page-header">
-				<button type="button" class="btn btn-back">Back</button>
+				<button type="button" class="btn btn-texted btn-back">
+					<span>Back</span>
+				</button>
 				<h1 class="h1">When buying a car, I priortize</h1>
-				<button type="button" class="btn btn-exit">Exit</button>
+				<button type="button" class="btn btn-texted btn-exit">
+					<span>Exit</span>
+				</button>
 			</div>
 
 			<div class="page-body">
 				<div class="quiz-selection">
-				   <button type="button" class="btn btn-item" aria-selected="false" onclick="quizSelection(this)">
-					   <strong class="tit">High performance</strong>
-					   <span class="img"><img src="./assets/images/quiz/img_quiz_1_1.jpg" alt="" /></span>
-				   </button>
-				   <button type="button" class="btn btn-item" aria-selected="false" onclick="quizSelection(this)">
-					   <strong class="tit">Reasonable value</strong>
-					   <span class="img"><img src="./assets/images/quiz/img_quiz_1_2.jpg" alt="" /></span>
-				   </button>
+					<button type="button" class="btn btn-item" aria-selected="false" onclick="quizSelection(this)">
+						<strong class="tit">High performance</strong>
+						<span class="img"><img src="./assets/images/quiz/img_quiz_1_1.jpg" alt="" /></span>
+					</button>
+					<button type="button" class="btn btn-item" aria-selected="false" onclick="quizSelection(this)">
+						<strong class="tit">Reasonable value</strong>
+						<span class="img"><img src="./assets/images/quiz/img_quiz_1_2.jpg" alt="" /></span>
+					</button>
 				</div>
 			</div>
 		</div>

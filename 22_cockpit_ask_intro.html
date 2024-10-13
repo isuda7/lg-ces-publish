@@ -16,17 +16,16 @@
 
 <body>
 	<div class="cockpit-wrapper">
-		<!-- 마이크가 실행되면 is-listening 클래스 추가 -->
-		<div class="page-wrapper mobility-ask-wrapper">
+		<div id="mobilityAsk" class="page-wrapper mobility-ask-wrapper">
 			<div class="page">
 				<div class="page-header">
-					<h1 class="h1">Hello, Driver</h1>
-					<button type="button" class="btn btn-exit">Exit</button>
+					<h1 class="h1">Ask Me Questions Like</h1>
 				</div>
 
 				<div class="page-body">
 					<div class="ask-example">
-						<button type="button" class="btn btn-example">
+						<!-- 선택 됨: is-selected 추가 -->
+						<button type="button" class="btn btn-example is-selected">
 							<strong class="tit">Good Cafe</strong>
 							<span class="txt">Find me a cafe near destination</span>
 						</button>
@@ -42,14 +41,12 @@
 				</div>
 
 				<div class="page-footer">
-					<!-- 마이크가 실행되면 disabled 속성 추가 -->
+					<!-- 말하기 진행중일때는 disabled 속성 추가 -->
 					<button type="button" class="btn btn-mic" aria-label="말하기"></button>
-					<video src=""></video>
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="./assets/js/aos@2.3.1.js"></script>
 </body>
 
 </html>

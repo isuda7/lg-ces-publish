@@ -11,22 +11,26 @@
 	<meta name="description" content="LG CES">
 	<title>Welcome, Driver! | LG CES</title>
 	<link rel="stylesheet" type="text/css" href="./assets/css/ui.style.css" />
-	<script src="./assets/js/aos@2.3.1.js"></script>
 </head>
 
 <body>
 	<div class="cockpit-wrapper">
-		<div class="page-wrapper mobility-ask-wrapper is-listening">
+		<div id="mobilityAsk" class="page-wrapper mobility-ask-wrapper">
 			<div class="page">
 				<div class="page-header">
-					<h1 class="h1">Hello, Driver</h1>
-					<button type="button" class="btn btn-exit">Exit</button>
+					<h1 class="h1">Now Listening</h1>
 				 </div>
 
 				 <div class="page-footer">
-					<button type="button" class="btn btn-mic" aria-label="말하기" disabled></button>
-					<video src=""></video>
-				</div>
+					 <button type="button" class="btn btn-mic" aria-label="말하기" disabled></button>
+				 </div>
+			</div>
+
+			<!-- 음성번역중 -->
+			<div class="page-layer">
+				<video controls autoplay class="ask-voice-vod">
+					<source src="./assets/images/voice_translation.mp4" type="video/mp4">
+				</video>
 			</div>
 		</div>
 	</div>
