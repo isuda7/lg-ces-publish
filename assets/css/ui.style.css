@@ -173,10 +173,10 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 .quiz-wrapper .page-progress {width: 638px; height: 12px; margin-left: auto; margin-right: auto; background-color: #615481; border-radius: 20px;}
 .quiz-wrapper .page-progress .quiz-value {display: block; height: inherit; width: 0%; border-radius: inherit; background-image: linear-gradient(to right, #B488E0, #F1D9FF);}
 .quiz-selection {display: grid; grid-template-columns: 1fr 1fr; gap: 72px;}
-.quiz-selection .btn {display: flex; flex-direction: column; overflow: visible; height: 642px; padding: 0 55px 48px 55px; border-radius: 22px; background-color: #fff; transition: all 0.3s ease;}
+.quiz-selection .btn {display: flex; flex-direction: column; overflow: visible; height: 640px; padding: 0 55px 48px 55px; border-radius: 22px; background-color: #fff; transition: all 0.3s ease;}
 .quiz-selection .btn .tit {position: relative; z-index: 2; display: flex; flex:none; align-items: center; justify-content: center; width: 100%; height: 128px; background: linear-gradient(288.82deg, #100A20 -4.76%, #824DE0 120.86%); -webkit-background-clip: text; font-size: 48px; color: transparent; font-weight: 400; letter-spacing: -0.05em;}
 .quiz-selection .btn .img {position: relative; z-index: 2; flex: 1 1 auto; display: block; width: 100%; height: 100%; overflow: hidden; border-radius: 14px;}
-.quiz-selection .btn .img img {flex: none;}
+.quiz-selection .btn .img img {flex: none; margin-top: -2px;}
 .quiz-selection .btn::before {content: ''; position: absolute; left: 0; top: 0; z-index: 2; display: block; width: 100%; height: 100%; background-color:#FD312E; opacity: 0; border-radius: 22px;}
 .quiz-selection .btn::after {content: ''; position: absolute; left: -3px; top: -3px; z-index: 1; display: block; width: calc(100% + 6px); height: calc(100% + 6px); border: 3px solid #FD312E; border-radius: 25px; background: linear-gradient(180deg, rgba(253, 49, 46, 0) 13.4%, rgba(253, 49, 46, 0.8) 110.98%), rgba(255, 255, 255, 0.9); opacity: 0;}
 .quiz-selection .btn .img::before {content: ''; position: absolute; left: 0; top: 0; z-index: 2; display: block; width: 100%; height: 100%; background-image: linear-gradient(242deg, var(--color-liner-red) 8.13%, var(--color-liner-orange) 89.99%); opacity: 0; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); mix-blend-mode: color;}
@@ -339,17 +339,24 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 
 /* 콕핏이미지 */
 .cockpit-wrapper {width: 1920px; height: 1080px;}
-.cockpit-wrapper::after {content:''; display: block; width: 100%; height: 100%; background: url('../images/cockpit_bg.jpg'); filter: grayscale(0%); animation: grayScale 4s ease forwards;}
-.cockpit-wrapper .cockpit-frame {position: absolute; left: 366px; top: 198px; z-index: 500; display: block; width: 1190px; height: 685px; background: url('../images/cockpit_frame.png') no-repeat center center; transform: translate(526px, 0px) scale(0.52);}
-.cockpit-wrapper .cockpit-frame .page-wrapper {position: absolute; left: 15px; top: 15px; transform: scale(0.604); border-radius: 10px; overflow: hidden; transform-origin: 0 0;}
-.cockpit-wrapper .cockpit-frame {animation: cockpicZoomin 4s ease forwards;}
+.cockpit-wrapper::before {content:''; display: block; width: 100%; height: 100%; background: url('../images/cockpit_bg.jpg'); filter: grayscale(0%); animation: grayScale 4s 0.75s ease forwards;}
+.cockpit-wrapper::after {content:''; position: absolute; left: 0; top: 0; display: block; width: 100%; height: 100%; background: url('../images/cockpit_bg_shadow.png');}
+.cockpit-wrapper .cockpit-frame {position: absolute; left: 360px; top: 192px; z-index: 500; display: block; width: 1188px; height: 683px; border: 18px solid #000; border-radius: 20px; background: url('../images/cockpit_frame.png') no-repeat center center; transform: translate(526px, 0px) scale(0.5);}
+.cockpit-wrapper .cockpit-frame::after {content:''; position: absolute; left: 0; bottom: 0; display:block; width: 100%; height: 50px; z-index: 100; background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.05) 17%, rgba(0, 0, 0, 2) 53%); animation: cockpitShadow 4s 0.75s ease forwards;  pointer-events: none;}
+.cockpit-wrapper .cockpit-frame .page-wrapper {position: absolute; left: 0px; top: -1px; transform: scale(0.6); border-radius: 10px; overflow: hidden; transform-origin: 0 0;}
+.cockpit-wrapper .cockpit-frame {animation: cockpicZoomin 4s 0.75s ease forwards;}
 @keyframes grayScale {
 	0% {filter: grayscale(0%)}
 	100% {filter: grayscale(100%)}
 }
 @keyframes cockpicZoomin {
-	0% {transform: translate(526px, 0px) scale(0.52)}
+	0% {transform: translate(526px, 0px) scale(0.50)}
 	100% {transform: translate(0, 0) scale(1);}
+}
+@keyframes cockpitShadow {
+	0% {bottom: 0px; height:50px;}
+	100% {bottom: -195px; height:350px;}
+
 }
 
 .cockpit-wrapper .btn-mylbs {position: absolute; right: 62px; bottom: 64px; z-index: 1100;}
