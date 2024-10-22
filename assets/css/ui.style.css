@@ -300,13 +300,21 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 /* .mobility-ask-wrapper .page-footer {position: relative; z-index: 300; margin-top: auto;}
 .mobility-ask-wrapper .page-footer .btn-mic {width: 120px; height: 120px; background: url('../images/icon_mic.png') no-repeat center center / contain;}
 .mobility-ask-wrapper .page-footer .btn-mic:disabled {filter: grayscale(100%);} */
-.ask-example {display: grid; grid-template-columns: 1fr 1fr 1fr; margin-top: 144px; gap: 56px;}
-.ask-example .btn-example {flex:1 1 auto; height: 309px; padding: 44px 42px 54px 42px; border-radius: 20px; text-align: left;}
+.ask-example {display: flex; margin-top: 144px; gap: 56px;}
+.ask-example .btn-example {flex:1; height: 309px; padding: 44px 42px 54px 42px; border-radius: 20px; text-align: left;}
 .ask-example .btn-example::before {content:''; position: relative; z-index: 2; display: block; width: 74px; height: 74px; background: url('../images/icon_srch.png') no-repeat center center;}
 .ask-example .btn-example::after {content:''; display: block; position: absolute; left: 0; top: 0; z-index: 1; width: 100%; height: 100%; background: linear-gradient(346.1deg, rgba(255, 255, 255, 0.0576) -12.39%, rgba(255, 255, 255, 0.512) 156.39%), linear-gradient(270deg, rgba(255, 255, 255, 0.1625) -20%, rgba(40, 40, 40, 0.005) 10.96%, rgba(255, 255, 255, 0.0625) 108.27%); backdrop-filter: blur(26px); transition:all 0.2s ease;}
 .ask-example .btn-example .tit {position: relative; z-index: 2; display: block; margin-top: 8px; font-size: 44px; line-height: 1.5;}
-.ask-example .btn-example .txt {position: relative; z-index: 2; display: block; margin-top: 18px; font-size: 32px; line-height: 1.4; font-family: var(--font-secondary); letter-spacing: -0.03em;}
+.ask-example .btn-example .txt {position: relative; z-index: 2; display: block; margin-top: 18px; font-size: 32px; line-height: 1.4; font-family: var(--font-secondary); letter-spacing: -0.03em; word-break: keep-all;}
 .ask-example .btn-example.is-selected::after {opacity: 0.1;}
+.ask-example.case-2 { gap: 40px;}
+.ask-example.case-2 .btn-example .tit {font-size: 34px;}
+.ask-example.case-2 .btn-example .txt {font-size: 26px; line-height: 38px; height: 76px;}
+.ask-example.case-3 {display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 70px;}
+.ask-example.case-3 .btn-example {height: 220px; padding: 36px 42px 36px 42px}
+.ask-example.case-3 .btn-example::before {display: inline-block; vertical-align: middle;}
+.ask-example.case-3 .btn-example .tit {display: inline-block; vertical-align: middle; margin-top: 0; margin-left: 8px;}
+.ask-example.case-3 .btn-example .txt {font-size: 26px; line-height: 38px; height: 76px; margin-left: 86px;}
 
 
 /* 모빌리티 음성번역중 */
