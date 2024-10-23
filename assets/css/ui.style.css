@@ -135,11 +135,16 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 .page-header .btn-texted:last-child {margin-right: -20px; padding: 8px 70px 8px 10px;}
 .page-header .btn-texted:last-child::before,
 .page-header .btn-texted:last-child::after {right: 10px;}
+.page-footer .btn-texted:last-child {margin-right: -20px; padding: 8px 10px 8px 70px;}
+.page-footer .btn-texted:last-child::before,
+.page-footer .btn-texted:last-child::after {left: 10px;}
 
 .btn-texted.btn-exit:before {background-image: url('../images/icon_exit.svg');}
 .btn-texted.btn-exit::after {background-image: url('../images/icon_exit_hover.svg');}
 .btn-texted.btn-return::before {background-image: url('../images/icon_back.svg')}
 .btn-texted.btn-return::after {background-image: url('../images/icon_back_hover.svg')}
+.btn-texted.btn-back::before {background-image: url('../images/icon_back.svg')}
+.btn-texted.btn-back::after {background-image: url('../images/icon_back_hover.svg')}
 .btn-texted.btn-mylbs::before {background-image: url('../images/icon_back.svg')}
 .btn-texted.btn-mylbs::after {background-image: url('../images/icon_back_hover.svg')}
 
@@ -148,6 +153,7 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 .quiz-wrapper .btn-texted.btn-exit:before {background-image: url('../images/icon_exit_wh.svg');}
 .quiz-wrapper .btn-texted:hover::before {opacity: 1;}
 .quiz-wrapper .btn-texted:hover::after {display: none;}
+
 
 /*-------------------------------------------------------------------
 	분류그룹 : 컨텐츠
@@ -294,8 +300,8 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 .mobility-ask-wrapper .page-body {position: absolute; left: 0; top: 135px; width: 100%; height: 565px;}
 .mobility-ask-wrapper .page-header {display: flex; justify-content: space-between; align-items: center;}
 .mobility-ask-wrapper .page-header h1.h1 {position: relative; z-index: 300; font-size: 90px; line-height: 1.5;;}
-.mobility-ask-wrapper .page-footer {position: relative; z-index: 300; margin-top: auto;}
-.mobility-ask-wrapper .page-footer .btn-mic {width: 120px; height: 120px; background: url('../images/icon_mic.png') no-repeat center center / contain;}
+.mobility-ask-wrapper .page-footer { margin-top: auto; display: flex; justify-content: space-between;}
+.mobility-ask-wrapper .page-footer .btn-mic {position: relative; z-index: 300; width: 120px; height: 120px; background: url('../images/icon_mic.png') no-repeat center center / contain;}
 .mobility-ask-wrapper .page-footer .btn-mic:disabled {filter: grayscale(100%);}
 /* .mobility-ask-wrapper .page-footer {position: relative; z-index: 300; margin-top: auto;}
 .mobility-ask-wrapper .page-footer .btn-mic {width: 120px; height: 120px; background: url('../images/icon_mic.png') no-repeat center center / contain;}
@@ -346,7 +352,7 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 .ask-faq.is-creating .ask-answer.has-bg.bg-7 {background-image: url('../images/ask_answer_bg_7.jpg'); background-position-y: 85%;}
 
 /* 콕핏이미지 */
-.cockpit-wrapper {width: 1920px; height: 1080px;}
+.cockpit-wrapper {position: relative; width: 1920px; height: 1080px;}
 .cockpit-wrapper::before {content:''; display: block; width: 100%; height: 100%; background: url('../images/cockpit_bg.jpg'); filter: grayscale(0%); animation: grayScale 4s 0.75s ease forwards;}
 .cockpit-wrapper::after {content:''; position: absolute; left: 0; top: 0; display: block; width: 100%; height: 100%; background: url('../images/cockpit_bg_shadow.png');}
 .cockpit-wrapper .cockpit-frame {position: absolute; left: 360px; top: 192px; z-index: 500; display: block; width: 1188px; height: 683px; border: 18px solid #000; border-radius: 20px; background: url('../images/cockpit_frame.png') no-repeat center center; transform: translate(526px, 0px) scale(0.5);}

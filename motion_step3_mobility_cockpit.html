@@ -16,17 +16,34 @@
 		let currentId = 'mobilityStart';
 
 		// 헤더설정
-		function setHeader(){
-			console.log(currentId);
+		function setPage(){
+			console.log(currentId, 'currentId');
 			const askTitle = document.getElementById('askTitle');
 			const askExitBtn = document.getElementById('askExitBtn');
+			const askBackBtn = document.getElementById('askBackBtn');
+
+			 // 현재 이벤트 리스너가 있는지 확인 후 제거
+			askBackBtn.removeEventListener('click', handleExitClick);
+
 			if (currentId === 'askSearching' || currentId === 'askResult') {
 				askExitBtn.classList.remove('is-hide');
+				askBackBtn.classList.remove('is-hide');
 				askTitle.innerText = 'Ask Anything';
+
+				askBackBtn.addEventListener('click', handleExitClick);
 			} else {
 				askExitBtn.classList.add('is-hide');
+				askBackBtn.classList.add('is-hide');
+				askBackBtn.classList.remove('is-selected');
 				askTitle.innerText = 'Ask Me Questions Like';
 			}
+		}
+
+		// 이벤트 리스너 함수 정의
+		function handleExitClick() {
+			const fromPage = currentId === 'askSearching' ? 'askSearching' : 'askResult';
+			const toPage = 'askExample';
+			PageChange(fromPage, toPage, this);
 		}
 
 		// 화면전환
@@ -46,9 +63,13 @@
 				btn.classList.add('is-selected');
 			}
 
+			console.log(showId, 'showId');
 			if (showId === 'askSearching' || showId === 'askResult') {
 				currentId = showId;
-				setHeader()
+				setPage()
+			} else if (showId === 'askExample'){
+				currentId = showId;
+				setPage()
 			}
 		}
 
@@ -67,7 +88,7 @@
 				// MY LBTI 화면으로 전환
 				document.getElementById(showId).classList.add('is-hide');
 				_this.removeAttribute ('disabled');
-				setHeader();
+				setPage();
 			});
 		}
 
@@ -120,7 +141,7 @@
 
 					<!-- 1.질문박스 -->
 					<div id="askExample" class="page-body">
-						<div class="ask-example">
+						<div class="ask-example case-3">
 							<!-- 화면이 노출되면 fade-up 추가 -->
 							<!-- 선택 됨: is-selected 추가 -->
 							<button type="button" class="btn btn-example" onclick="PageChange('askExample', 'askSearching', this)">
@@ -132,6 +153,10 @@
 								<span class="txt">Find a restful place nearby</span>
 							</button>
 							<button type="button" class="btn btn-example" onclick="PageChange('askExample', 'askResult', this)">
+								<strong class="tit">Activities Nearby</strong>
+								<span class="txt">Find things to do nearby</span>
+							</button>
+							<button type="button" class="btn btn-example">
 								<strong class="tit">Activities Nearby</strong>
 								<span class="txt">Find things to do nearby</span>
 							</button>
@@ -204,6 +229,9 @@
 					<!-- 말하기 진행중일때는 disabled 속성 추가 -->
 					<div class="page-footer">
 						<button type="button" class="btn btn-mic" aria-label="말하기" onclick="micPlayer('askMicPlayer', this)"></button>
+						<button type="button" id="askBackBtn" class="btn btn-texted btn-back is-hide">
+							<span>Back</span>
+						</button>
 					</div>
 
 					<!-- 공통. 음성번역중 -->
