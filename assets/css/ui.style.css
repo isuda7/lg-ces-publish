@@ -126,9 +126,12 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 .btn-texted::before,
 .btn-texted::after {content:''; position: absolute; top: 50%; transform: translateY(-50%); display: inline-block; width: 60px; height: 60px; background: no-repeat center center / contain;}
 .btn-texted::after {opacity: 0;}
-.btn-texted:hover span {background-size:auto;}
-.btn-texted:hover::before {opacity: 0;}
-.btn-texted:hover::after {opacity: 1;}
+/* 2024-11-04 마우스전용 호버로 변경 */
+@media (hover: hover) and (pointer: fine) {
+	.btn-texted:hover span {background-size:auto;}
+	.btn-texted:hover::before {opacity: 0;}
+	.btn-texted:hover::after {opacity: 1;}
+}
 .page-header .btn-texted:first-child {margin-left: -20px; padding: 8px 10px 8px 70px;}
 .page-header .btn-texted:first-child::before,
 .page-header .btn-texted:first-child::after {left: 10px;}
@@ -151,8 +154,11 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 .quiz-wrapper .btn-texted span {background: linear-gradient(337.18deg, rgba(130, 77, 224, 0) 27.5%, #824DE0 110.8%), #fff;-webkit-background-clip: text;-webkit-text-fill-color: transparent;background-clip: text;text-fill-color: transparent; background-size:0 0;}
 .quiz-wrapper .btn-texted.btn-back:before {background-image: url('../images/icon_back_wh.svg');}
 .quiz-wrapper .btn-texted.btn-exit:before {background-image: url('../images/icon_exit_wh.svg');}
-.quiz-wrapper .btn-texted:hover::before {opacity: 1;}
-.quiz-wrapper .btn-texted:hover::after {display: none;}
+/* 2024-11-04 마우스전용 호버로 변경 */
+@media (hover: hover) and (pointer: fine) {
+	.quiz-wrapper .btn-texted:hover::before {opacity: 1;}
+	.quiz-wrapper .btn-texted:hover::after {display: none;}
+}
 
 
 /*-------------------------------------------------------------------
@@ -190,9 +196,12 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 .quiz-selection .btn::before,
 .quiz-selection .btn::after,
 .quiz-selection .btn .img::before {transition: all 0.3s ease;}
-.quiz-selection .btn:not(.is-on):hover .img::before {opacity: 0.4; }
-.quiz-selection .btn:not(.is-on):hover::after {opacity: 1;}
-.quiz-selection .btn:not(.is-on):hover .tit {color: #FD312E;}
+/* 2024-11-04 마우스전용 호버로 변경 */
+@media (hover: hover) and (pointer: fine) {
+	.quiz-selection .btn:not(.is-on):hover .img::before {opacity: 0.4; }
+	.quiz-selection .btn:not(.is-on):hover::after {opacity: 1;}
+	.quiz-selection .btn:not(.is-on):hover .tit {color: #FD312E;}
+}
 .quiz-selection .btn.is-on::before {opacity: 1;}
 .quiz-selection .btn.is-on .tit {color: #fff;}
 .quiz-selection .btn.is-on .img::before {opacity: 0.4; }
