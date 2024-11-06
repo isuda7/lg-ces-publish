@@ -287,6 +287,36 @@ body, html {height:100%; overflow: hidden; background-color: #000;}
 .mylbti-wrapper .sec-04 .sec-scroll {height: 366px;}
 .mylbti-wrapper .sec-04 .data-content {margin-top: 50px;}
 
+/* 2024-11-06 LBTI 개선건 추가 */
+/* Interaction */
+.mylbti-wrapper {--duration-content: 0.5s;}
+.mylbti-wrapper.is-startup .page-body .sec-02 .txt-big,
+.mylbti-wrapper .page-body .sec-02 .txt-small,
+.mylbti-wrapper .page-body .sec-03,
+.mylbti-wrapper .page-body .sec-04,
+.mylbti-wrapper .page-footer .btn-ride {visibility:visible; opacity: 1; pointer-events: auto; transition: all var(--duration-content) ease;}
+.mylbti-wrapper .page-body .sec-02 .txt-big,
+.mylbti-wrapper.is-startup .page-body .sec-02 .txt-small,
+.mylbti-wrapper.is-startup .page-body .sec-03,
+.mylbti-wrapper.is-startup .page-body .sec-04,
+.mylbti-wrapper.is-startup .page-footer .btn-ride {visibility:hidden; opacity: 0; pointer-events: none; transition: all var(--duration-content) ease;}
+.mylbti-wrapper .page-footer .btn-ride {transition-delay: var(--duration-content);}
+/* styles */
+.mylbti-wrapper .page-body .sec-01,
+.mylbti-wrapper .page-body .sec-02 {display: flex; align-items: center; align-items: center; transition: all var(--duration-content) ease;}
+.mylbti-wrapper .page-body .sec-02 .sec-scroll {padding-right: 56px;}
+.mylbti-wrapper .page-body .sec-02 .data-content .cont {position: relative;}
+.mylbti-wrapper .page-body .sec-02 .data-content .cont p {position: absolute; left: 0; top: 0; width: 100%;}
+.mylbti-wrapper .page-body .sec-01 .lbti-list {width: 100%;}
+.mylbti-wrapper .page-body .sec-02 .sec-scroll {height: 100%; width: 100%;}
+.mylbti-wrapper.is-startup .page-body .sec-01,
+.mylbti-wrapper.is-startup .page-body .sec-02 {height: 500px; transform: translateY(100px);}
+.mylbti-wrapper.is-startup .page-body .sec-02 .sec-scroll {padding-right: 0;}
+.mylbti-wrapper.is-startup .page-body .sec-02 .txt-small {font-size: 20px; line-height: 1.5;}
+.mylbti-wrapper.is-startup .page-body .sec-02 .txt-big {font-size: 36px; line-height: 1.5;}
+
+
+
 /* 모빌리티 - 메인 */
 .mobility-start-wrapper {padding-top: 188px; padding-bottom: 120px; background: url('../images/mobility_start_bg.jpg') no-repeat 0 0;}
 .mobility-start-wrapper .page-header {width: 652px;}

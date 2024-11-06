@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="format-detection" content="telephone=no" />
+	<meta name="viewport"
+		content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" />
+	<meta name="keywords" content="LG CES">
+	<meta name="description" content="LG CES">
+	<title>MY LBS | LG CES</title>
+	<link rel="icon" href="./favicon.ico" />
+<link rel="stylesheet" type="text/css" href="./assets/css/ui.style.css" />
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const radius = 50; // 반지름
+    const circumference = 2 * Math.PI * radius; // 둘레 계산
+    const progress = 0.75; // 75% 진행
+    const progressCircle = document.querySelector('circle.progress-circle');
+    const percentageDisplay = document.getElementById('percentage');
+
+    // 애니메이션 시작
+    let currentOffset = circumference; // 시작 offset
+    const targetOffset = circumference * (1 - progress); // 목표 offset
+    let currentPercentage = 0; // 시작 퍼센트
+    let startTime = null; // 애니메이션 시작 시간
+
+    // Easing 함수 (ease-in-out)
+    function easeInOutQuad(t) {
+        return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+    }
+
+    function animateProgress(timestamp) {
+        if (!startTime) startTime = timestamp; // 처음 호출 시 시작 시간 기록
+        const elapsed = timestamp - startTime; // 경과 시간
+
+        // 애니메이션 진행 비율 (0에서 1까지)
+        const duration = 1200; // 애니메이션 지속 시간 (밀리초)
+        const progressRatio = Math.min(elapsed / duration, 1); // 0 ~ 1로 제한
+        const easedProgress = easeInOutQuad(progressRatio); // easing 적용
+
+        // 현재 offset 계산
+        currentOffset = circumference * (1 - easedProgress * progress); // 변화하는 offset
+        currentPercentage = easedProgress * 100 * progress; // 퍼센트 증가 계산
+
+        // 원과 퍼센트 업데이트
+        progressCircle.setAttribute('stroke-dashoffset', currentOffset);
+        percentageDisplay.textContent = Math.round(currentPercentage) + '%'; // HTML 텍스트 업데이트
+
+        if (progressRatio < 1) {
+            requestAnimationFrame(animateProgress); // 다음 프레임 요청
+        } else {
+            // 최종 값 설정
+            progressCircle.setAttribute('stroke-dashoffset', targetOffset);
+            percentageDisplay.textContent = Math.round(progress * 100) + '%'; // 최종 퍼센트
+        }
+    }
+
+    requestAnimationFrame(animateProgress); // 애니메이션 실행
+		})
+	</script>
+</head>
+
+<body>
+	<div id="coldStartMylbs" class="page-wrapper mylbti-wrapper">
+		<div class="page">
+			<div class="page-header">
+				<h1 class="h1">MY LBTI</h1>
+			</div>
+
+			<div class="page-body">
+				<!-- sec-01 -->
+				<div class="sec-01">
+					<ul class="lbti-list">
+						<li class="lbti-item"><div class="item">Cost-Effective</div></li>
+						<li class="lbti-item"><div class="item">Inactive</div></li>
+						<li class="lbti-item"><div class="item">New Experience</div></li>
+						<li class="lbti-item"><div class="item">Planned</div></li>
+						<li class="lbti-item"><div class="item">Popular</div></li>
+						<li class="lbti-item"><div class="item">Delicate</div></li>
+					</ul>
+				</div>
+				<!-- // sec-01 -->
+				<!-- sec-02 -->
+				<div class="sec-02">
+					<div class="sec-inner sec-scroll">
+						<div class="data-content">
+							<h2 class="h2">Smart &amp; Delicate Scheduler</h2>
+							<div class="cont">
+								<p>You pursue a sensitive and planned lifestyle.</p>
+								<p>You pursue a sensitive and planned lifestyle.</p>
+								<p>You pursue a sensitive and planned lifestyle.</p>
+							</div>
+						</div>
+						<div class="data-graph">
+							<svg width="120" height="120">
+								<!-- Gradient Definition -->
+								<defs>
+									<linearGradient id="bgGradient" x1="100%" y1="100%" x2="0%" y2="100%">
+										<stop offset="0%" style="stop-color:#fff; stop-opacity:0.1" />
+										<stop offset="100%" style="stop-color:#999; stop-opacity:0.1" />
+									</linearGradient>
+								</defs>
+								<!-- Background Circle -->
+								<circle cx="60" cy="60" r="50" class="circle" stroke="url(#bgGradient)"/>
+
+								<!-- Gradient Definition -->
+								<defs>
+									<linearGradient id="perGradient" x1="100%" y1="100%" x2="0%" y2="100%">
+										<stop offset="0%" style="stop-color:#C9B3EE; stop-opacity:1" />
+										<stop offset="100%" style="stop-color:#A17DC4; stop-opacity:1" />
+									</linearGradient>
+								</defs>
+								<!-- Progress Circle with Gradient -->
+								<circle cx="60" cy="60" r="50" class="circle progress-circle" stroke="url(#perGradient)"
+										stroke-dasharray="314.16"
+										stroke-dashoffset="314.16" />
+
+							</svg>
+							<div class="percentage-display" id="percentage">0%</div>
+						</div>
+					</div>
+				</div>
+				<!-- // sec-02 -->
+				<!-- sec-03 -->
+				<div class="sec-03">
+					<ul class="sec-list">
+						<li class="sec-item">
+							<div class="data-item">
+								<div class="data-icon">
+									<i class="icn icn-100-interest">Interest</i>
+								</div>
+								<ul class="data-list">
+									<li>Data 1</li>
+									<li>Data 2</li>
+									<li>Data 3</li>
+								</ul>
+							</div>
+						</li>
+						<li class="sec-item">
+							<div class="data-item">
+								<div class="data-icon">
+									<i class="icn icn-100-purchase">Purchase</i>
+								</div>
+								<ul class="data-list">
+									<li>Data 1</li>
+									<li>Data 2</li>
+									<li>Data 3</li>
+								</ul>
+							</div>
+						</li>
+						<li class="sec-item">
+							<div class="data-item">
+								<div class="data-icon">
+									<i class="icn icn-100-home">Home</i>
+								</div>
+								<ul class="data-list">
+									<li>Data 1</li>
+									<li>Data 2</li>
+									<li>Data 3</li>
+								</ul>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<!-- // sec-03 -->
+				<!-- sec-04 -->
+				<div class="sec-04">
+					<div class="sec-inner sec-scroll">
+						<div class="data-item">
+							<div class="data-icon">
+								<i class="icn icn-100-car"></i>
+							</div>
+							<ul class="data-list">
+								<li>Data 1</li>
+								<li>Data 2</li>
+								<li>Data 3</li>
+							</ul>
+						</div>
+
+						<div class="data-content">
+							<h2 class="h2">POI Category</h2>
+							<div class="cont">
+								<p>You pursue a sensitive and planned lifestyle.</p>
+								<p>You pursue a sensitive and planned lifestyle.You pursue a sensitive and planned lifestyle.</p>
+							</div>
+						</div>
+
+						<div class="data-content">
+							<h2 class="h2">Driving Habaits</h2>
+							<div class="cont">
+								<p>You pursue a sensitive and planned lifestyle.</p>
+								<p>You pursue a sensitive and planned lifestyle.You pursue a sensitive and planned lifestyle.</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- // sec-04 -->
+			</div>
+
+			<div class="page-footer">
+				<!-- 선택 후: is-selected -->
+				<button type="button" class="btn btn-rounded btn-ride">
+					<span>Ride</span>
+				</button>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
